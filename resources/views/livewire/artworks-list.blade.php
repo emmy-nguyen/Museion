@@ -7,7 +7,7 @@
     </div>
 
     <!--category tab-->
-    <div class="flex gap-2 justify-center mb-6">
+    <div class="flex flex-wrap gap-2 justify-center mb-6">
         <button wire:click="filterByCategory(null)" class="rounded-full px-4 py-2 text-sm uppercase font-medium {{ is_null($selectedCategory) ? 'bg-[#c9a050]' : 'bg-[#191913] text-white hover:bg-[#191913]/90' }}">All</button>
         
         @foreach($categories as $category)

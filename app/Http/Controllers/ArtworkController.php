@@ -76,6 +76,6 @@ class ArtworkController extends Controller
 
         }
 
-        return redirect()->route('artworks.detail', ['id' => $artwork->id])->with('artworks.detail', "Artwork uploaded successfully!");
+        return redirect()->route('artworks.detail', ['id' => $artwork->id])->with('success', "Artwork uploaded successfully!");
     }
 }
