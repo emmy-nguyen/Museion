@@ -15,6 +15,6 @@ class ArtworkImage extends Model
    ];
    public function artwork() 
    {
-        return $this->belongsTo(Artwork::class);
+        return $this->belongsTo(Artwork::class, 'art_work_id');
    }
 }

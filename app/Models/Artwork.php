@@ -27,9 +27,9 @@ class Artwork extends Model
         return $this->belongsTo(Category::class);
     }
     public function images() {
-        return $this->hasMany(ArtworkImage::class);
+        return $this->hasMany(ArtworkImage::class, 'art_work_id');
     }
     public function primaryImage() {
-        return $this->hasOne(ArtworkImage::class)->where('is_primary', true);
+        return $this->hasOne(ArtworkImage::class, 'art_work_id')->where('is_primary', true);
     }
 }
