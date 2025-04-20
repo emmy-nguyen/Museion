@@ -17,4 +17,8 @@ class ArtworkImage extends Model
    {
         return $this->belongsTo(Artwork::class, 'art_work_id');
    }
+   public function getImageUrlAttribute()
+   {
+      return Storage::disk('s3')->url($this->image_path);
+   }
 }

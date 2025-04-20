@@ -20,69 +20,98 @@
         @endif
         @livewireStyles
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mt-6 mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
+    <body class="bg-[#f7f6ec] dark:bg-[#f7f6ec] text-[#1b1b18] flex items-center lg:justify-center min-h-screen flex-col">
+        <header class="w-full flex justify-center dark:bg-black">
+            <div class="w-full lg:max-w-4xl max-w-[350px] bg-white dark:bg-black text-sm mt-6 mb-6 items-center not-has-[nav]:hidden">
+            <div class="flex flex-row justify-between items-center">
+                    <a href="{{ route('home') }}">
+                        <x-application-logo class="inline-block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    </a>
+                @if (Route::has('login'))
+            
+                    <nav class="flex items-center justify-end gap-4">
+                        @auth
+                            <a 
+                            href="{{ route('artworks') }}" 
                             class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
-
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
+                            >
+                                All Artworks
                             </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
+                            <a
+                                href="{{ url('/dashboard') }}"
+                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                            >
+                                Dashboard
+                            </a>
+                        @else
+                            <a 
+                                href="{{ route('artworks') }}" 
+                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                            >
+                                All Artworks
+                            </a>
+                            <a
+                                href="{{ route('login') }}"
+                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                            >
+                                Log in
+                            </a>
+
+                            @if (Route::has('register'))
+                                <a
+                                    href="{{ route('register') }}"
+                                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
+                                    Register
+                                </a>
+                            @endif
+                        @endauth
+                    </nav>
+                @endif
+            </div>
+            </div>
         </header>
         
-        <main class="w-full flex flex-col space-y-6 justify-center items-center">
+        <!--main-->
+        <main class="w-full flex flex-col space-y-6 justify-center items-center bg-[#f7f6ec] dark:bg-[#f7f6ec] mb-12">
                 <!--- hero --->
                 @if($heroBannerArtwork)
                 <div class="w-full relative">
-                    <div class="w-full">
+                    <div class="w-full md:h-[900px] h-[500px]">
                         <img src="{{ $heroBannerArtwork->primaryImage->image_path }}" alt="{{ $heroBannerArtwork->title }}" class="w-full h-full object-cover"/>
                     </div>
                     <div class="w-full absolute inset-0 bg-black/30 flex items-center justify-center">
                         <div class="w-full text-center flex flex-col space-y-5 items-center">
-                            <p class="text-white">{{ $heroBannerArtwork->user->name }}</p>
-                            <h1 class="text-white text-5xl">{{ $heroBannerArtwork->title }}</h1>
-                            <a href="/artworks/{{ $heroBannerArtwork->id }}" class="uppercase text-white w-[200px] bg-amber-700 rounded-full font-semibold py-4 px-8">Learn more</a>
+                            <p class="text-[#f7f6ec]">{{ $heroBannerArtwork->user->name }}</p>
+                            <h1 class="text-[#f7f6ec] text-5xl">{{ $heroBannerArtwork->title }}</h1>
+                            <a href="/artworks/{{ $heroBannerArtwork->id }}" class="uppercase text-[#191913] w-[150px] bg-[#f7f6ec] hover:bg-[#191913] hover:text-[#f7f6ec] rounded-full font-semibold py-4 px-2">Learn more</a>
                         </div>
                     </div>
                 </div>
                 @endif
 
             <!-- featured artworks -->
-                <div class="max-w-7xl w-full mx-auto flex flex-col justify-center items-center">
-                    <div class="grid md:grid-cols-3 grid-cols-1 gap-5 justify-items-center">
+                <div class="max-w-7xl mx-auto px-8 mt-12">
+                    <div class="flex justify-between items-center mb-8 px-8 mt-8">
+                        <h1 class="text-3xl text-[#191913] dark:text-[#191913] mb-4">Featured Artworks</h1>
+                        <div class="flex flex-row gap-2 items-center">
+                            <a href="{{ route('artworks') }}" class="uppercase font-semibold cursor-pointer hover:text-[#c9a050]">View More</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-10" fill="none" stroke="currentColor" viewBox="0 0 44 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M40 12H3m37 0l-4 4m4-4l-4-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 grid-cols-1 gap-8 justify-items-center px-8">
                         @foreach($featuredArtworks as $artwork)
-                            <div class="w-full">
-                                <a>
-                                    <img src="{{ $artwork->primaryImage->image_path }}" alt="{{ $artwork->title }}" class="w-full" />
-                                    <p class="text-white">{{ $artwork->title }}</p>
+                            <div class="w-full h-64 md:mb-24 mb-16">
+                                <a href="{{ route('artworks.detail', ['id' => $artwork->id]) }}" class="block transform duration-300 hover:scale-110 w-full h-full">
+                                    <img src="{{ $artwork->primaryImage->image_path }}" alt="{{ $artwork->title }}" class="w-full h-full object-cover rounded-lg" />
                                 </a>
+                                <h2 class="text-xl text-[#191913] dark:text-[#191913] mt-4">{{ $artwork->title }}</h2>
+                                <p class="text-sm text-[#989894] dark:text-[#989894] mt-2">{{ $artwork->user->name }}</p>
                             </div>
                         @endforeach
                     </div>
-                    <div class="mt-12">
-                        <a href="/artworks" class="uppercase bg-amber-200 text-white px-8 py-4 w-[200px] rounded-full text-center font-semibold">View more</a>
-                    </div>
+
                 </div>
             </main>
         </div>
@@ -90,6 +119,8 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+
+        <x-footer/>
         @livewireScripts
     </body>
 </html>

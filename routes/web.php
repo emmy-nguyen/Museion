@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'render'])->name('home');
 Route::get('/artworks', [ArtworkController::class, 'all'])->name('artworks');
-Route::get('/artworks/{id}', [ArtworkController::class, 'find'])->name('artworks.detail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -17,9 +16,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/artworks/create', [ArtworkController::class, 'all'])->name('artworks.create');
-
+    Route::get('/artworks/create', [ArtworkController::class, 'create'])->name('artworks.create');
+    Route::post('/artworks', [ArtworkController::class, 'store'])->name('artworks.store');
+    
 });
+Route::get('/artworks/{id}', [ArtworkController::class, 'find'])->name('artworks.detail');
 
 
 require __DIR__.'/auth.php';

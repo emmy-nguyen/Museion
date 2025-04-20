@@ -4,7 +4,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
     @forelse($artworks as $artwork)
-    <div class="bg-white rounded-lg shadow overflow-hidden">
+    <div class="bg-[#eeede0] rounded-lg shadow overflow-hidden">
                 <img 
                     src="{{ $artwork->primaryImage ? $artwork->primaryImage->image_path : '/images/placeholder.jpg' }}" 
                     alt="{{ $artwork->title }}" 

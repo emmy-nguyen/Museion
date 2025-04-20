@@ -23,7 +23,15 @@ class ArtworkFactory extends Factory
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(),
             'user_id' => User::factory()->create(),
-            'category_id' => Category::factory(),
+            'category_id' => function() {
+                if(Category::count() === 0) {
+                    $categories = ['Paintings', 'Sculpture', 'Photography', 'Digital Art'];
+                    foreach($categories as $category) {
+                        Category::create(['name' => $category]);
+                    }
+                }
+                return Category::inRandomOrder()->first()->id;
+            },
             'medium' => $this->faker->randomElement(['Oil on canvas', 'Acrylic', 'Watercolor', 'Digital', 'Mixed media']),
             'price' => $this->faker->randomFloat(2, 50, 5000),
             'dimensions' => $this->faker->randomElement(['24in x 36in', '12in x 16in', '8in x 10in']),

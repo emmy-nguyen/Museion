@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CategoryFactory extends Factory {
     public function definition(): array
     {
-        $name = $this->faker->unique()->word();
+        static $categories = ['Paintings', 'Sculpture', 'Photography', 'Digital Art'];
+        static $index = 0;
+        if($index >= count($categories))
+        {
+            $index = 0;
+        }
+        $name = $categories[$index++];
         return [
-            'name' => ucfirst($name),
+            'name' => $name,
         ];
     }
 }
