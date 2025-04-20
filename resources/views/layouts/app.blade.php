@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-[#f7f6ec] dark:bg-[#f7f6ec]">
         <div class="min-h-screen bg-[#f7f6ec] dark:bg-[#f7f6ec]">
             @include('layouts.navigation')
 
@@ -33,6 +33,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <x-footer />
         @livewireScripts
     </body>
 </html>
