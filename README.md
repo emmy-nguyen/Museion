@@ -1,5 +1,11 @@
 # B TIER
 
+`npm run build`
+`npm run dev`
+`php artisan serve`
+
+Visit [http://127.0.0.1:8000]
+
 ## Access Rules
 
 -   **Home page**: No login required

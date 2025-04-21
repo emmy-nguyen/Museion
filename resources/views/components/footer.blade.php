@@ -1,8 +1,8 @@
 <footer class="bg-black w-full text-brand-light mt-8 flex flex-col justify-center items-center">
     <div class="w-full max-w-7xl text-[#f7f6ec]">
-        <div class="w-full grid md:grid-cols-2 grid-cols-1 gap-5 px-8 items-center">
+        <div class="w-full grid md:grid-cols-2 grid-cols-1 gap-5 px-8 items-center mt-12 mb-8">
             <div class="w-full flex md:justify-start justify-center items-center">
-                <div class="w-[300px]">
+                <div class="w-[150px]">
                     <img src="/images/museion-logo-M-removebg.png" alt="museion-logo" class="w-full"/>
                 </div>
             </div>
